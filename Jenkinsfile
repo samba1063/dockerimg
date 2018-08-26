@@ -15,6 +15,7 @@ try {
         sh "/bin/cp -f $WORKSPACE/Build-${env.BUILD_NUMBER}/samba_${env.BRANCH_NAME}${env.BUILD_NUMBER}.war $WORKSPACE/samba.war"
        }
     }
+}
     
     
     environment {
