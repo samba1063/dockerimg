@@ -44,8 +44,7 @@ try {
   
    delivery.artifactory()
         
-       
-  }
+      
   catch (e) {
       currentBuild.result = "FAILED"
       throw e
