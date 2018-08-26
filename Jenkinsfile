@@ -1,4 +1,3 @@
-
 node('Node1') {
 // Delete the workspace
 //deleteDir()
@@ -15,9 +14,7 @@ try {
         sh "/bin/cp -f $WORKSPACE/Build-${env.BUILD_NUMBER}/samba_${env.BRANCH_NAME}${env.BUILD_NUMBER}.war $WORKSPACE/samba.war"
        }
     }
-}
-    
-    stage('build image') {
+          stage('build image') {
         app = docker.build("shanmukha443/docker:docker${env.BUILD_NUMBER}")
        }
    
@@ -38,10 +35,10 @@ try {
   
    delivery.artifactory()
         
-      
+       
+  }
   catch (e) {
       currentBuild.result = "FAILED"
       throw e
     }
 }
-
