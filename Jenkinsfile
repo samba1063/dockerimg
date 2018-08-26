@@ -17,14 +17,8 @@ try {
     }
 }
     
-    
-    environment {
-    registry = “shanmukha443/docker”
-    registryCredential = ‘docker-samba’
-    dockerImage = ‘’
-  }
-          stage('build image') {
-        dockerImage = docker.build registry + “:$BUILD_NUMBER"
+    stage('build image') {
+        app = docker.build("shanmukha443/docker:docker${env.BUILD_NUMBER}")
        }
    
           stage('Push image') {
@@ -32,8 +26,8 @@ try {
          * First, the incremental build number from Jenkins
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
-        docker.withRegistry('', registryCredential) {
-            dockerImage.push()
+        docker.withRegistry('https://registry.hub.docker.com', 'docker-samba') {
+            app.push("docker${env.BUILD_NUMBER}")
            
          }
           }
