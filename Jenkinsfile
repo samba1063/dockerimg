@@ -12,7 +12,7 @@ try {
       docker.image('maven:3.5-jdk-8-alpine').inside {
         sh "mvn clean package -Dbuild.number=${BUILD_NUMBER}"
         sh "/bin/mv -f $WORKSPACE/target/*.war $WORKSPACE/Build-${env.BUILD_NUMBER}/samba_${env.BRANCH_NAME}${env.BUILD_NUMBER}.war"
-        sh " /bin/cp -f $WORKSPACE/Build-${env.BUILD_NUMBER}/samba_${env.BRANCH_NAME}${env.BUILD_NUMBER}.war $WORKSPACE/samba.war
+        sh "/bin/cp -f $WORKSPACE/Build-${env.BUILD_NUMBER}/samba_${env.BRANCH_NAME}${env.BUILD_NUMBER}.war $WORKSPACE/samba.war"
        }
     }
           stage('build image') {
