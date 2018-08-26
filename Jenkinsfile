@@ -24,7 +24,7 @@ try {
     dockerImage = ‘’
   }
           stage('build image') {
-        dockerImage = docker.build registry + “:$BUILD_NUMBER”
+        dockerImage = docker.build registry + “:$BUILD_NUMBER"
        }
    
           stage('Push image') {
@@ -33,7 +33,7 @@ try {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('', registryCredential) {
-            dockerImage.push("docker${env.BUILD_NUMBER}")
+            dockerImage.push()
            
          }
           }
