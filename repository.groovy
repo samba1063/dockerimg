@@ -5,7 +5,7 @@ def callS3Upload(mesg){
 //    withAWS(credentials:'mobile-s3-user',region:'us-east-1') {
 //	s3Upload(acl:'PublicRead',bucket:'mybucket-ssp',cacheControl:'',excludePathPattern:'',file:"Build-${env.BUILD_NUMBER}",metadatas:[''],path:"${env.BRANCH_NAME}/Build-${env.BUILD_NUMBER}")
 //    }
-//withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'sambaaws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) 
+withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'sambaaws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) 
     {
 //s3Upload(acl:'PublicRead',bucket:'mybucket-ssp',cacheControl:'',excludePathPattern:'',file:"Build-${env.BUILD_NUMBER}",metadatas:[''],path:"${env.BRANCH_NAME}/Build-${env.BUILD_NUMBER}")
 
