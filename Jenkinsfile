@@ -1,4 +1,4 @@
-node('new43') {
+node('neew') {
 // Delete the workspace
 //deleteDir()
      def app
