@@ -1,3 +1,4 @@
+
 node('neew') {
 // Delete the workspace
 //deleteDir()
