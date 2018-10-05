@@ -2,7 +2,7 @@
 node('neew') {
 // Delete the workspace
 //deleteDir()
-     def app
+  def app
 stage('Retrieve source code') {
     checkout scm
     delivery = load 'repository.groovy'
