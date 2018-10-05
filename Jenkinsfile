@@ -1,20 +1,21 @@
-node('neew') {
+node('new43') {
 // Delete the workspace
 //deleteDir()
-    def app
+     def app
 stage('Retrieve source code') {
     checkout scm
     delivery = load 'repository.groovy'
-    sh " cd $WORKSPACE;/bin/mkdir Build-${env.BUILD_NUMBER}"
+    sh " cd $WORKSPACE;/bin/mkdir Build-${env.BUILD_NUMBER} "
     }
-    try {
-    stage('Maven Build') {
+try {
+     stage('Maven Build') {
       docker.image('maven:3.5-jdk-8-alpine').inside {
         sh "mvn clean package -Dbuild.number=${BUILD_NUMBER}"
         sh "/bin/mv -f $WORKSPACE/target/*.war $WORKSPACE/Build-${env.BUILD_NUMBER}/samba_${env.BRANCH_NAME}${env.BUILD_NUMBER}.war"
         sh "/bin/cp -f $WORKSPACE/Build-${env.BUILD_NUMBER}/samba_${env.BRANCH_NAME}${env.BUILD_NUMBER}.war $WORKSPACE/samba.war"
-       }
-    }
+       
+      }
+     }
           stage('build image') {
         app = docker.build("sambasiva2407/devopsguru:docker${env.BUILD_NUMBER}")
        }
